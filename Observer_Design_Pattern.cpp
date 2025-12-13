@@ -1,17 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Observable Interface
-class IObservable
-{
-public:
-    virtual void addObserver(class IObserver *observer) = 0;
-    virtual void removeObserver(class IObserver *observer) = 0;
-    virtual void notifyObservers() = 0;
-    virtual void uploadContent(string Content_Title) = 0;
-    virtual ~IObservable() {} // Virtual Destructor
-};
-
 // Observer Interface
 class IObserver
 {
@@ -20,11 +9,24 @@ public:
     virtual ~IObserver() {} // Virtual Destructor
 };
 
+// Observable Interface
+class IObservable
+{
+protected:
+    unordered_set<IObserver *> observers;
+
+public:
+    virtual void addObserver(class IObserver *observer) = 0;
+    virtual void removeObserver(class IObserver *observer) = 0;
+    virtual void notifyObservers() = 0;
+    virtual void uploadContent(string Content_Title) = 0;
+    virtual ~IObservable() {} // Virtual Destructor
+};
+
 // Concrete Observable Class
 class Channel : public IObservable
 {
 private:
-    unordered_set<IObserver *> observers;
     string channelName;
     string latestVideo;
 
