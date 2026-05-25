@@ -1,5 +1,0 @@
-Hello World
-Codeforces
-[IMAGE_PATH : London.jpg ] 
-LeetCoding
-[IMAGE_PATH : Melbourn.png ] 
